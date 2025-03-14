@@ -155,7 +155,8 @@ int main()
         printf("Selecione a opção desejada: \n\n");
         printf("\t1 - Registrar nomes de alunos\n"); //barra t = pula um espaço consideravel do começo do texto
         printf("\t2 - Consultar nomes de alunos\n");
-        printf("\t3 - Deletar nomes de alunos\n\n");
+        printf("\t3 - Deletar nomes de alunos\n");
+        printf("\t4 - Sair do sistema\n\n");
         printf("Opção: "); //fim do menu
 
         scanf("%d", &opcao); // scanf serve para armazenar o numero digitado na variavel opcao. também pausa o programa
@@ -174,6 +175,11 @@ int main()
 
             case 3:
             deletar();
+            break;
+            
+            case 4:
+            printf("Sistema finalizado!\n");
+            return 0; // tem como função fechar o programa, quebrando os laços
             break;
 
             default:
