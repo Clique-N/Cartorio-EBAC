@@ -56,9 +56,7 @@ int registro() // função para entrar na tela de registro
 	fclose(file);
 		
 	system("pause");
-
 }
-
 int consulta()
 {
 	setlocale(LC_ALL, "Portuguese");
@@ -108,7 +106,6 @@ int consulta()
 	system("pause");
 	}
 }
-
 int deletar ()
 {
 	setlocale(LC_ALL, "Portuguese");
@@ -139,7 +136,6 @@ int deletar ()
 		
 		system("pause");
 	}
-
 }
 int main()
 {
