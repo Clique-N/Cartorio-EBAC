@@ -79,7 +79,8 @@ int consulta()
 		printf("CPF não cadastrado.\n");
 		system("pause");
 	}
-	
+	else
+	{
 	fgets(conteudo, 200, file); // lê o conteúdo completo
 	
 	char *token = strtok(conteudo, ","); // separa o conteudo em pequenas partes quando possui ","
@@ -105,6 +106,7 @@ int consulta()
 	
 	fclose(file);	
 	system("pause");
+	}
 }
 
 int deletar ()
@@ -143,48 +145,68 @@ int main()
 {
     int opcao=0; // definindo variaveis
     int rep=1; // variável de laço de repetição
+    char senhadigitada[10]="a"; // variável para armazenar a senha digitada
+    char senha_correta[] = "admin"; //senha correta para o login
+    
+    printf("-- Cartório da EBAC --\n\n"); //barra n = pula linha 
+    
+    do
+	{
+    	printf("Login de administrador \n\n Digite a sua senha: ");
+    	scanf("%s",senhadigitada); //leitura da senha informada
+    	
+    	if (strcmp(senhadigitada, senha_correta)!=0) //strcmp é uma função de comparação. Vai comparar a senha digitada com a varíavel senha_correta
+			{ 
+    		printf("\n\nSenha incorreta! Tente novamente!\n\n"); 
+    		}
+    	else
+    	{
+    		printf("\n\nLogin bem-sucedido!\n");
+    		break;
+		}
+	}
+	while (1); // Saida do loop caso correto 
 
-    for (rep=1;rep=1;)
-    {
+   	for (rep=1;rep=1;)
+   	{
 
-        system("cls");
+   	    system("cls");
 
-        setlocale(LC_ALL, "Portuguese"); //estamos colocando que o código vai estar em portugues
+   	    setlocale(LC_ALL, "Portuguese"); //estamos colocando que o código vai estar em portugues
+       	printf("-- Cartório da EBAC --\n\n"); //barra n = pula linha 
+       	printf("Selecione a opção desejada: \n\n");
+       	printf("\t1 - Registrar nomes de alunos\n"); //barra t = pula um espaço consideravel do começo do texto
+       	printf("\t2 - Consultar nomes de alunos\n");
+       	printf("\t3 - Deletar nomes de alunos\n");
+       	printf("\t4 - Sair do sistema\n\n");
+       	printf("Opção: "); //fim do menu
+					
+	   	scanf("%d", &opcao); // scanf serve para armazenar o numero digitado na variavel opcao. também pausa o programa
 
-        printf("-- Cartório da EBAC --\n\n"); //barra n = pula linha 
-        printf("Selecione a opção desejada: \n\n");
-        printf("\t1 - Registrar nomes de alunos\n"); //barra t = pula um espaço consideravel do começo do texto
-        printf("\t2 - Consultar nomes de alunos\n");
-        printf("\t3 - Deletar nomes de alunos\n");
-        printf("\t4 - Sair do sistema\n\n");
-        printf("Opção: "); //fim do menu
+   	    system("cls"); // tem como função limpar a tela
+	
+      	switch(opcao) // inicio da seleção do menu
+   		{
+       	    case 1:
+           	registro(); // tem como objetivo chamar a função "registro" criado no int
+           	break;
+			
+           	case 2:
+           	consulta();
+           	break;
 
-        scanf("%d", &opcao); // scanf serve para armazenar o numero digitado na variavel opcao. também pausa o programa
-
-        system("cls"); // tem como função limpar a tela
-
-        switch(opcao) // inicio da seleção do menu
-        {
-            case 1:
-            registro(); // tem como objetivo chamar a função "registro" criado no int
-            break;
-
-            case 2:
-            consulta();
-            break;
-
-            case 3:
-            deletar();
-            break;
+           	case 3:
+           	deletar();
+           	break;
             
-            case 4:
-            printf("Sistema finalizado!\n");
-            return 0; // tem como função fechar o programa, quebrando os laços
-            break;
+           	case 4:
+           	printf("Sistema finalizado!\n");
+           	return 0; // tem como função fechar o programa, quebrando os laços
+           	break;
 
-            default:
-            printf("Opção indisponível!\n");
-            break;
-        }
-    }
+           	default:
+           	printf("Opção indisponível!\n");
+           	break;
+       	}
+   	}
 }
